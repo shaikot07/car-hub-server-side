@@ -32,8 +32,10 @@ async function run() {
 
 
 
-    app.get('/product',(req,res)=>{
-      
+    app.get('/product',async(req,res)=>{
+      const cursor=productCollection.find();
+      const result= await cursor.toArray()
+      res.send(result)
     })
       // step:1 
       app.post('/product',async(req,res)=>{
